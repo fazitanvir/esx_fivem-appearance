@@ -8,7 +8,7 @@ Config.Locale = 'fr'
 -- You can define here wich items will be check in player inventory during spawn, to apply the bag component on the player.
 -- Those items require at least those metadatas, for example: metadata = {bag = true, model = 82, color = 1}
 
-Config.Bags = true -- enable/disable the bag check system.
+Config.Bags = false -- enable/disable the bag check system.
 Config.WaitForCheck = 10000
 Config.bagItems = {
     'bag',
