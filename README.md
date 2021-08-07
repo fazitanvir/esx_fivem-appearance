@@ -51,15 +51,18 @@
   As I said, you'll need to add a limit in your inventory to make that feature working properly.
   Personnally, I added a 'limit' key in the metadata table. For example a bag item looks like this into `linden_inventory/shared/shops.lua`:
   ```lua
-    { name = 'bag', 		price = 450, 	metadata = { 
-      image = "bag_yellow", -- the image for the item
-      bag = true, -- enable bag type from linden inventory system
-      slots = 25, -- maximum bag slots
-      limit = 1, -- here is the custom value
-      model = 82, -- the drawable of the bag who'll be applied on player
-      color = 2, -- the color of the bag
-      description = "Coulor: Yelllow | Capacity: 25 slots" 
-      } 
+    { 
+      name = 'bag',
+      price = 450, 
+      metadata = { 
+          image = "bag_yellow", -- the image for the item
+          bag = true, -- enable bag type from linden inventory system
+          slots = 25, -- maximum bag slots
+          limit = 1, -- here is the custom value
+          model = 82, -- the drawable of the bag who'll be applied on player
+          color = 2, -- the color of the bag
+          description = "Coulor: Yelllow | Capacity: 25 slots" 
+      }
     },
   ```
 
