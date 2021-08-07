@@ -1,6 +1,5 @@
-# Customized version of fivem-appearance to match roleplay servers using ESX Legacy.
-  - This repo is an edited version of this: 
-  https://github.com/ZiggyJoJo/brp-fivem-appearance
+# fivem-appearance for RP Servers using ESX Legacy.
+  - This repo is an edited version of <a href='https://github.com/ZiggyJoJo/brp-fivem-appearance'>brp-fivem-appearance</a>
 
  ## Description 
   I made this to use fivem-appearance on a roleplay server using ESX Legacy.
