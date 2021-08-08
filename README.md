@@ -37,6 +37,20 @@
     - 'bracelet'
     - 'mask'
     - 'bag' -- optionnal
+
+ follow this template: 
+    ["hat"] = {
+      label = 'Chapeau',
+      weight = 340,
+      stack = false,
+      close = true,
+      client = {
+        consume = 0,
+        anim = { dict = 'missfbi4', clip = 'takeoff_mask' },
+        usetime = 1000,
+        event = true,
+      }
+    },
   ```
 
  ## Configuration
