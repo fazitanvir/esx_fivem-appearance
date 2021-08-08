@@ -14,7 +14,7 @@
 
 
  ## Features
-  - Removed Bags and bodyArmor from the menu, it makes more sense to buy them from shops, and I did not want any bodryArmor,
+  - Removed Bags and bodyArmor from the menu, it makes more sense to buy them from shops, and I did not want any bodyArmor,
   - Moved Masks into Props tab,
   - When buying from barber shop, you'll pay an unique price,
   - When buying clothings, and save, you'll pay depending of the price of each components,
@@ -28,7 +28,7 @@
  ## How to install 
   - Make sure to disable your old `fivem-appearance` resource
   - Start the 2 included resources `fivem-appearance` & `fivem-accessories` in your server.cfg
-  - Add those items intoto  `linden_inventory/shared/items.lua ` :
+  - Add those items into  `linden_inventory/shared/items.lua ` :
   ```lua
     - 'hat'
     - 'glasses'
