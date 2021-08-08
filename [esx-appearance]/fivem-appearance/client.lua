@@ -212,7 +212,7 @@ OpenAccessorieMenu = function()
 		local cancelled = false
 		
 		local config = {
-			ped = true,
+			ped = false,
 			headBlend = false,
 			faceFeatures = false,
 			headOverlays = false,
