@@ -51,13 +51,7 @@ ESX.RegisterServerCallback('fivem-appearance:BuyOutfit', function(source, cb, to
 			end
 		end
 		
-		xPlayer.removeMoney(totalPrice)
-		
-		MySQL.Async.execute('UPDATE users SET skin = @skin WHERE identifier = @identifier', {
-			['@skin'] = json.encode(appearance),
-			['@identifier'] = xPlayer.identifier
-		})
-		
+		xPlayer.removeMoney(totalPrice)		
 		xPlayer.showNotification('You paid $'..totalPrice)
 		cb(true)
 	else
