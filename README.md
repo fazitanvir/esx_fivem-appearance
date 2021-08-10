@@ -10,6 +10,7 @@
 
  ## Requirement
   - <a href='https://github.com/esx-framework/es_extended/tree/legacy'>ESX Legacy</a> or <a href='https://github.com/thelindat/es_extended'>ESX Legacy by TheLindat (recommended)</a>
+  - <a href ='https://github.com/thelindat/esx_multicharacter'>esx_multicharacter</a>
   - <a href='https://github.com/thelindat/linden_inventory'>linden_inventory</a>
 
 
