@@ -20,6 +20,11 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.PlayerLoaded = true
 end)
 
+AddEventHandler('esx:onPlayerLogout', function()
+	ESX.PlayerLoaded = false
+	ESX.PlayerData = {}
+end)
+
 -- RegisterCommand('customization', function()
 -- 	local config = {
 -- 		ped = true,
