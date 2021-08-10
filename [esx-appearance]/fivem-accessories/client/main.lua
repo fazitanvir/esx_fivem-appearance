@@ -1,24 +1,32 @@
 -- THIS IS NOT A CONFIG, DO NOT TOUCH!
 local cloths = {
 	['hat'] =		 { id = 1,  	gender = 'mp_m_freemode_01', 	default = -1,	limit = 152, 	type = 'props'		},
-	['glasses'] =	 { id = 2,   	gender = 'mp_f_freemode_01', 	default = -1,	limit = 35, 	type = 'props'		},
+	['glasses'] =	 	 { id = 2,   	gender = 'mp_f_freemode_01', 	default = -1,	limit = 35, 	type = 'props'		},
 	['ear'] =		 { id = 3,  	gender = 'mp_m_freemode_01', 	default = -1,	limit = 40, 	type = 'props'		},
 	['watch'] =	 	 { id = 4,  	gender = 'mp_m_freemode_01', 	default = -1,	limit = 40, 	type = 'props'		},
-	['bracelet'] = 	 { id = 5,  	gender = 'mp_f_freemode_01', 	default = -1,	limit = 8, 		type = 'props'		},
+	['bracelet'] = 	 	 { id = 5,  	gender = 'mp_f_freemode_01', 	default = -1,	limit = 8, 	type = 'props'		},
 	['mask'] =	 	 { id = 2,   	gender = 'mp_f_freemode_01', 	default = 0,	limit = 189, 	type = 'components'	},
 }
+
+
+--? Checking bags in inventory on player spawn
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+	ESX.PlayerData = xPlayer
+	ESX.PlayerLoaded = true
+	if Config.Bags then CheckBag() end
+end)
+
+RegisterNetEvent('esx:onPlayerLogout')
+AddEventHandler('esx:onPlayerLogout', function()
+	ESX.PlayerLoaded = false
+	ESX.PlayerData = {}
+end)
 
 if Config.Bags then
 	for _, bagItem in pairs(Config.bagItems) do
 		cloths[bagItem] = { id = 6,  	gender = 'mp_m_freemode_01',  	default = 0, 	limit = 88, 	type = 'components' }
 	end
-
-	--? Checking bags in inventory on player spawn
-	RegisterNetEvent('esx:playerLoaded')
-	AddEventHandler('esx:playerLoaded', function(xPlayer, isNew)
-		CheckBag()
-	end)
-
 	
 	--? Opening bags
 	RegisterNetEvent('linden_inventory:bag')
@@ -114,15 +122,13 @@ end
 exports('ApplyAppearance', ApplyAppearance)
 
 CheckBag = function()
-	Citizen.CreateThread(function()
-		Citizen.Wait(Config.WaitForCheck)
-		ESX.TriggerServerCallback('fivem-accessories:getItemMetadata',function(itemMeta)
-			if itemMeta and itemMeta.bag then
-				local playerComponents = exports["fivem-appearance"]:getPedComponents(ESX.PlayerData.ped)
-				ApplyAppearance('components', playerComponents, cloths['bag'].id, itemMeta.model, itemMeta.color)
-			else 
-				ApplyAppearance('components', playerComponents, cloths['bag'].id, cloths[item.name].default, cloths[item.name].default)
-			end
-		end, Config.bagItems)
-	end)
+	Citizen.Wait(Config.WaitForCheck)
+	ESX.TriggerServerCallback('fivem-accessories:getItemMetadata',function(itemMeta)
+		if itemMeta and itemMeta.bag then
+			local playerComponents = exports["fivem-appearance"]:getPedComponents(ESX.PlayerData.ped)
+			ApplyAppearance('components', playerComponents, cloths['bag'].id, itemMeta.model, itemMeta.color)
+		else 
+			ApplyAppearance('components', playerComponents, cloths['bag'].id, cloths[item.name].default, cloths[item.name].default)
+		end
+	end, Config.bagItems)
 end
